@@ -117,9 +117,9 @@ public class SlicingPlaneConrols : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _sliders[0].Value = _slicingPlanes[0].transform.localPosition.z;
-        _sliders[1].Value = _slicingPlanes[1].transform.localPosition.y;
-        _sliders[2].Value = _slicingPlanes[2].transform.localPosition.x;
+        //_sliders[0].Value = _slicingPlanes[0].transform.localPosition.z;
+        //_sliders[1].Value = _slicingPlanes[1].transform.localPosition.y;
+        //_sliders[2].Value = _slicingPlanes[2].transform.localPosition.x;
 
     }
 }

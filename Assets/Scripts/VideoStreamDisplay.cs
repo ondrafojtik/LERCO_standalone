@@ -7,6 +7,10 @@ public class VideoStreamDisplay : MonoBehaviour
     public Renderer quadRenderer;
     private WebCamTexture feed = null;
 
+    [SerializeField] GameObject _slicingPlaneXZ;
+    [SerializeField] GameObject _slicingPlaneXY;
+    [SerializeField] GameObject _slicingPlaneZY;
+
     int _device_count = 0;
     int _id = 0;
 
@@ -22,8 +26,8 @@ public class VideoStreamDisplay : MonoBehaviour
 
         _device_count = WebCamTexture.devices.Length;
         var devices = WebCamTexture.devices;
-        //feed = new WebCamTexture(devices[_id].name, 1920, 1080, 30);
-        feed = new WebCamTexture(devices[_id].name, 1280, 720, 60);
+        feed = new WebCamTexture(devices[_id].name, 1920, 1080, 30);
+        //feed = new WebCamTexture(devices[_id].name, 1280, 720, 60);
         quadRenderer.material.mainTexture = feed;
         feed.Play();
 
@@ -36,6 +40,13 @@ public class VideoStreamDisplay : MonoBehaviour
 
     public void Button_ChangeSource()
     {
+        // new 
+        // hard set for debug
+
+
+
+        // old
+
         Debug.Log("BUTTON PRESSED- ID:" + _id);
         Debug.Log("Device count: " + _device_count);
 
