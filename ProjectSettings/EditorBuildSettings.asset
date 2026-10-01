@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/mrtkscene.unity
+    guid: 5518277922e5f544e91fd216167ad034
   m_configObjects:
     Hololight.Stream.XRSettings: {fileID: 11400000, guid: 81c9cf469b901054589eadc43e60756d,
       type: 2}

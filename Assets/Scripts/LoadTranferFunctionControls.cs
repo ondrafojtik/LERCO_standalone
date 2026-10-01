@@ -77,7 +77,7 @@ public class LoadTranferFunctionControls : MonoBehaviour
         }
 
         // #TODO ugly setting default tf to appear as active in TF select window
-        _buttons[1].GetComponent<PressableButton>().ForceSetToggled(true);
+        _buttons[0].GetComponent<PressableButton>().ForceSetToggled(true);
 
     }
 

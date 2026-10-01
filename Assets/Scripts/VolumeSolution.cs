@@ -19,6 +19,7 @@ using Unity.Mathematics;
 using Unity.XR.CoreUtils;
 using UnityEngine.XR;
 using MixedReality.Toolkit;
+using MixedReality.Toolkit.SpatialManipulation;
 
 public class VolumeSolution : MonoBehaviour
 {
@@ -52,7 +53,10 @@ public class VolumeSolution : MonoBehaviour
     [SerializeField] GameObject _slicingPlanes;
     [SerializeField] GameObject _dicomMenu;
     [SerializeField] GameObject _nrrdMenu;
+    [SerializeField] GameObject _videostreamWindow;
 
+    [SerializeField] GameObject _sceneObjectFixation;
+    [SerializeField] GameObject _parent_SegmentedVolumeObject;
 
     List<SlicingPlane> slicingPlanes = new List<SlicingPlane>();
 
@@ -255,10 +259,10 @@ public class VolumeSolution : MonoBehaviour
         // setup vro
         SetupVRO(vro, __meshContainer, dataset, VolumeMainObject, crossSection);
         // setup tf
-        string resources_folder = Application.dataPath + "/Resources/";
+        string resources_folder = Application.dataPath + "/Resources/TF/";
         string tf_filepath = "";
-        if (isNRRD) tf_filepath = resources_folder + "defaultSeg.txt";
-        if (!isNRRD) tf_filepath = resources_folder + "defaultTF.txt";
+        if (isNRRD) tf_filepath = resources_folder + "original.txt";
+        if (!isNRRD) tf_filepath = resources_folder + "original.txt";
 
 
         //UnityVolumeRendering.TransferFunction tf__ = ;
@@ -382,6 +386,22 @@ public class VolumeSolution : MonoBehaviour
         }
     }
 
+    public void ToggleSceneObjectFixation()
+    {
+        //_sceneObjectFixation.SetActive(!_sceneObjectFixation);
+        _toggle_scene_manipulation();
+    }
+
+    public void ToggleVideoStreamWindow()
+    {
+        _videostreamWindow.SetActive(!_videostreamWindow.active);
+    }
+
+    private void _toggle_scene_manipulation()
+    {
+        _parent_SegmentedVolumeObject.GetComponent<ObjectManipulator>().enabled = !_parent_SegmentedVolumeObject.GetComponent<ObjectManipulator>().enabled;
+    }
+
     public async void LoadDataset(string path)
     {
         // deprecated
@@ -439,7 +459,7 @@ public class VolumeSolution : MonoBehaviour
         _loadDatasetControls.GetComponentInChildren<LoadDatasetControls>()._baseDirectory = baseDatasetFolderPath;
         _loadDatasetControls.GetComponentInChildren<LoadDatasetControls>().init();
 
-        string baseTransferFunctionFolderPath = Application.dataPath + "/Resources/";
+        string baseTransferFunctionFolderPath = Application.dataPath + "/Resources/TF/";
         List<string> _tfFiles = Directory.GetFiles(baseTransferFunctionFolderPath).ToList();
 
         _loadTransferFunctionControls.GetComponentInChildren<LoadTranferFunctionControls>()._datasetDirectories = _tfFiles;
