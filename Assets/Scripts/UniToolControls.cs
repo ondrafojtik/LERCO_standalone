@@ -50,10 +50,7 @@ public class UniToolController : MonoBehaviour
         SeparateCubeFromSceneObject();
     }
 
-    // The unitool cube sits inside _segmentedObject, whose ObjectManipulator is what "Fix In Scene" switches off.
-    // XRI maps every collider to ONE interactable (the first registered), so the cube's colliders were also owned
-    // by the scene object and went dead with it. Take the cube's colliders away from the scene object's manipulator
-    // so "Fix In Scene" only fixes the DICOM/scene and the cube keeps its own manipulator.
+    
     private void SeparateCubeFromSceneObject()
     {
         ObjectManipulator sceneManipulator = _segmentedObject.GetComponent<ObjectManipulator>();
@@ -79,47 +76,22 @@ public class UniToolController : MonoBehaviour
     void Update()
     {
         float y_ = _crossSection.transform.localPosition.y;
-        //y_ = Mathf.Max(y_, 0.093838f);
-        //y_ = Mathf.Min(y_, -0.045f);
-        //if (y_ < -0.045f) y_ = -0.045f;
-        //if (y_ > 0.093838f) y_ = 0.093838f;
-
-        //0.1249
-
+       
+        // rough estimate of +-5cm from the tip of pedicle
+        // *magic numbers*
 
         if (y_ < 0.0772f) y_ = 0.0772f;
         if (y_ > 0.1249) y_ = 0.1249f;
 
-
-        //if (y_ < -0.245f) y_ = -0.245f;
-        //if (y_ > -0.045f) y_ = -0.045f;
-
-
-        //if (y_ < 0) y_ = 0;
-        //if (y_ > 5) y_ = 5;
-
-        //y_ = Mathf.Max(y_, 3f);
-        //y_ = Mathf.Min(y_, 0f);
         _crossSection.transform.localPosition = new Vector3(0f, y_, 0f);
-
-        //_crossSection_X.transform.position = new Vector3(_crossSection_X.transform.position.x, _cube_uniTool.transform.position.y, _crossSection_X.transform.position.y);
-        //_dummy.transform.position = _cube_uniTool.transform.position;
 
         _dummy.transform.position = new Vector3(_cube_uniTool.transform.position.x - _segmentedObject.transform.position.x,
                                                 _cube_uniTool.transform.position.y - _segmentedObject.transform.position.y,
                                                 _cube_uniTool.transform.position.z - _segmentedObject.transform.position.z );
 
-        //_spectate_Z.SetActive(false);
-        //_spectate_X.SetActive(true);
-
         _spectate_X.transform.position = _cube_uniTool.transform.position;
         _spectate_X.transform.rotation = _cube_uniTool.transform.rotation;
         _spectate_X.transform.Rotate(0f, 180f, 90f);
-        //_spectate_X.transform.Rotate(0f, 0f, 90f, Space.World);
-
-        //_spectate_X.SetActive(false);
-        //_spectate_Z.SetActive(true);
-
 
         _spectate_Z.transform.position = _cube_uniTool.transform.position;
         _spectate_Z.transform.rotation = _cube_uniTool.transform.rotation;
@@ -128,26 +100,7 @@ public class UniToolController : MonoBehaviour
         _spectate_Y.transform.position = _cube_uniTool.transform.position;
         _spectate_Y.transform.rotation = _cube_uniTool.transform.rotation;
         _spectate_Y.transform.Rotate(0f, 0f, 0f);
-        //_spectate_Y.transform.Rotate(180f, 0f, 0f);
 
-        //_spectate_X.SetActive(true);
-        //1spectate_X.SetActive(false);
-
-        //Vector3 p_ = _spectate_X.transform.position;
-        //_spectate_X.transform.position = new Vector3(_cube_uniTool.transform.position.x, p_.y, p_.z);
-        //_spectate_X.transform.rotation = _cube_uniTool.transform.rotation;
-        //_spectate_X.transform.localRotation.
-        //_spectate_X.transform.localRotation = _cube_uniTool.transform.rotation;
-        //_spectate_X.transform.localRotation = Quaternion.Euler(new Vector3(_cube_uniTool.transform.rotation.eulerAngles.x, _spectate_X.transform.localRotation.eulerAngles.y, _cube_uniTool.transform.rotation.eulerAngles.z));
-
-
-        //_spectate_X.transform.Rotate(0, 0, 90f);
-
-
-        //p_ = _spectate_Z.transform.position;
-        //_spectate_Z.transform.position = new Vector3(p_.x, p_.y, _cube_uniTool.transform.position.z);
-        //_spectate_Z.transform.localRotation = _cube_uniTool.transform.rotation;
-        //_spectate_Z.transform.Rotate(90f, 90f, 90f);
     }
 
     public void ToggleUniToolSceneFixation()
@@ -167,36 +120,20 @@ public class UniToolController : MonoBehaviour
             _crossSection.GetComponent<ObjectManipulator>().enabled = false;
         }
 
-
-
-        //_cube_uniTool.GetComponent<BoxCollider>().enabled = !_cube_uniTool.GetComponent<BoxCollider>().enabled;
-        //_cube_uniTool.GetComponent<ObjectManipulator>().enabled = !_cube_uniTool.GetComponent<ObjectManipulator>().enabled;
-        
-        
-        // the cutout (_crossSection) has its own toggle: ToggleUniToolCutoutSceneFixation
     }
 
     public void ToggleUniToolCutoutSceneFixation()
     {
         _crossSection.GetComponent<ObjectManipulator>().enabled = !_crossSection.GetComponent<ObjectManipulator>().enabled;
-        //cube_uniTool_cutout.GetComponent<ObjectManipulator>().enabled = !_cube_uniTool_cutout.GetComponent<ObjectManipulator>().enabled;
-        //float y_ = _crossSection.transform.localPosition.y;
-        // -0.045f - real_value
-        // max(-0.45f, y_)
-        // -0.045f
-        // 0.093838f
-        //_crossSection.transform.localPosition = new Vector3(0f, y_, 0f);
-
-
+        
     }
 
+    // deprecated 
     public void AxisSliderUpdated(SliderEventData data)
     {
         float adj_value = _axisSlider.Value / 5;
         float real_value = (0.0187676f * adj_value);
 
-        //_filler.transform.localPosition = new Vector3(0f, -0.045f - real_value, 0f);
-        //_crossSection.transform.localPosition = new Vector3(0f, -0.045f - real_value, 0f);
     }
 
     // toggle: while active the unitool can only be rotated (not moved)
