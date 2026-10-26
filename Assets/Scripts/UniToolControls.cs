@@ -40,6 +40,8 @@ public class UniToolController : MonoBehaviour
     private bool _positionFixed = false;
     private bool _rotationFixed = false;
 
+    private bool _modify_cutout_state = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -150,8 +152,27 @@ public class UniToolController : MonoBehaviour
 
     public void ToggleUniToolSceneFixation()
     {
-        _cube_uniTool.GetComponent<BoxCollider>().enabled = !_cube_uniTool.GetComponent<BoxCollider>().enabled;
-        _cube_uniTool.GetComponent<ObjectManipulator>().enabled = !_cube_uniTool.GetComponent<ObjectManipulator>().enabled;
+        _modify_cutout_state = !_modify_cutout_state;
+
+        if(_modify_cutout_state)
+        {
+            _cube_uniTool.GetComponent<BoxCollider>().enabled = false;
+            _cube_uniTool.GetComponent<ObjectManipulator>().enabled = false;
+            _crossSection.GetComponent<ObjectManipulator>().enabled = true;
+        }
+        else
+        {
+            _cube_uniTool.GetComponent<BoxCollider>().enabled = true;
+            _cube_uniTool.GetComponent<ObjectManipulator>().enabled = true;
+            _crossSection.GetComponent<ObjectManipulator>().enabled = false;
+        }
+
+
+
+        //_cube_uniTool.GetComponent<BoxCollider>().enabled = !_cube_uniTool.GetComponent<BoxCollider>().enabled;
+        //_cube_uniTool.GetComponent<ObjectManipulator>().enabled = !_cube_uniTool.GetComponent<ObjectManipulator>().enabled;
+        
+        
         // the cutout (_crossSection) has its own toggle: ToggleUniToolCutoutSceneFixation
     }
 
