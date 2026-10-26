@@ -261,8 +261,8 @@ public class VolumeSolution : MonoBehaviour
         // setup tf
         string resources_folder = Application.dataPath + "/Resources/TF/";
         string tf_filepath = "";
-        if (isNRRD) tf_filepath = resources_folder + "original.txt";
-        if (!isNRRD) tf_filepath = resources_folder + "original.txt";
+        if (isNRRD) tf_filepath = resources_folder + "DisplayAll.txt";
+        if (!isNRRD) tf_filepath = resources_folder + "DisplayAll.txt";
 
 
         //UnityVolumeRendering.TransferFunction tf__ = ;
