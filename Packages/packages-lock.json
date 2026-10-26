@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.hololight.stream": {
-      "version": "file:C:/Users/Ondra-PC/Desktop/hololight_stream/Hololight-Stream-SDK-Trial-2024.0.0/Packages/com.hololight.stream-2024.0.0.tgz",
+      "version": "file:../LocalPackages/com.hololight.stream-2024.0.0.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -12,7 +12,7 @@
       }
     },
     "com.hololight.stream.mrtk3": {
-      "version": "file:C:/Users/Ondra-PC/Desktop/hololight_stream/Hololight-Stream-SDK-Trial-2024.0.0/Packages/com.hololight.stream.mrtk3-2024.0.0.tgz",
+      "version": "file:../LocalPackages/com.hololight.stream.mrtk3-2024.0.0.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -25,7 +25,7 @@
       }
     },
     "com.magicleap.mrtk3": {
-      "version": "file:C:/Users/Ondra-PC/Desktop/hololight_new/com.magicleap.mrtk3-1.4.0.tgz",
+      "version": "file:../LocalPackages/com.magicleap.mrtk3-1.4.0.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -40,7 +40,7 @@
       }
     },
     "com.magicleap.unitysdk": {
-      "version": "file:C:/Users/Ondra-PC/MagicLeap/tools/unity/v2.6.0/com.magicleap.unitysdk.tgz",
+      "version": "file:../LocalPackages/com.magicleap.unitysdk.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -55,7 +55,7 @@
       }
     },
     "com.microsoft.mrtk.graphicstools.unity": {
-      "version": "file:C:/dev/lerco/lerco_test/Packages/MixedReality/com.microsoft.mrtk.graphicstools.unity-0.6.7.tgz",
+      "version": "file:../LocalPackages/com.microsoft.mrtk.graphicstools.unity-0.6.7.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {}
@@ -366,7 +366,7 @@
       "url": "https://packages.unity.com"
     },
     "org.mixedrealitytoolkit.audio": {
-      "version": "file:C:/Users/Ondra-PC/Downloads/org.mixedrealitytoolkit.audio-3.0.5.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.audio-3.0.5.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -374,7 +374,7 @@
       }
     },
     "org.mixedrealitytoolkit.core": {
-      "version": "file:C:/Users/Ondra-PC/Downloads/org.mixedrealitytoolkit.core-3.3.0.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.core-3.3.0.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -384,7 +384,7 @@
       }
     },
     "org.mixedrealitytoolkit.diagnostics": {
-      "version": "file:C:/Users/Ondra-PC/Downloads/org.mixedrealitytoolkit.diagnostics-3.0.3.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.diagnostics-3.0.3.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -393,7 +393,7 @@
       }
     },
     "org.mixedrealitytoolkit.extendedassets": {
-      "version": "file:C:/Users/Ondra-PC/Downloads/org.mixedrealitytoolkit.extendedassets-3.0.4.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.extendedassets-3.0.4.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -401,7 +401,7 @@
       }
     },
     "org.mixedrealitytoolkit.input": {
-      "version": "file:C:/Users/Ondra-PC/Downloads/org.mixedrealitytoolkit.input-3.3.0.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.input-3.3.0.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -415,7 +415,7 @@
       }
     },
     "org.mixedrealitytoolkit.spatialmanipulation": {
-      "version": "file:C:/Users/Ondra-PC/Downloads/org.mixedrealitytoolkit.spatialmanipulation-3.4.0.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.spatialmanipulation-3.4.0.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -426,7 +426,7 @@
       }
     },
     "org.mixedrealitytoolkit.standardassets": {
-      "version": "file:C:/dev/lerco/lerco_test/Packages/MixedReality/org.mixedrealitytoolkit.standardassets-3.0.1.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.standardassets-3.0.1.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -434,7 +434,7 @@
       }
     },
     "org.mixedrealitytoolkit.tools": {
-      "version": "file:C:/Users/Ondra-PC/Downloads/org.mixedrealitytoolkit.tools-3.0.5.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.tools-3.0.5.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -442,7 +442,7 @@
       }
     },
     "org.mixedrealitytoolkit.uxcomponents": {
-      "version": "file:C:/Users/Ondra-PC/Downloads/org.mixedrealitytoolkit.uxcomponents-3.4.0.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.uxcomponents-3.4.0.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -454,7 +454,7 @@
       }
     },
     "org.mixedrealitytoolkit.uxcomponents.noncanvas": {
-      "version": "file:C:/dev/lerco/lerco_test/Packages/MixedReality/org.mixedrealitytoolkit.uxcomponents.noncanvas-3.1.1.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.uxcomponents.noncanvas-3.1.1.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -464,7 +464,7 @@
       }
     },
     "org.mixedrealitytoolkit.uxcore": {
-      "version": "file:C:/Users/Ondra-PC/Downloads/org.mixedrealitytoolkit.uxcore-3.3.0.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.uxcore-3.3.0.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
@@ -476,7 +476,7 @@
       }
     },
     "org.mixedrealitytoolkit.windowsspeech": {
-      "version": "file:C:/Users/Ondra-PC/Downloads/org.mixedrealitytoolkit.windowsspeech-3.0.4.tgz",
+      "version": "file:../LocalPackages/org.mixedrealitytoolkit.windowsspeech-3.0.4.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
