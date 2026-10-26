@@ -7,6 +7,7 @@ using UnityVolumeRendering;
 public class NavigationControls : MonoBehaviour
 {
     [SerializeField] MixedReality.Toolkit.UX.Slider _leftSlider;
+    [SerializeField] MixedReality.Toolkit.UX.Slider _middleSlider;
     [SerializeField] MixedReality.Toolkit.UX.Slider _rightSlider;
 
     [SerializeField] MixedReality.Toolkit.UX.Slider _posSlider;
@@ -14,6 +15,7 @@ public class NavigationControls : MonoBehaviour
 
 
     [SerializeField] Camera leftCamera;
+    [SerializeField] Camera middleCamera;
     [SerializeField] Camera rightCamera;
 
     // Start is called before the first frame update
@@ -31,6 +33,11 @@ public class NavigationControls : MonoBehaviour
     public void LeftSliderUpdated(SliderEventData data) // green
     {
         leftCamera.orthographicSize = _leftSlider.Value;
+    }
+
+    public void MiddleSliderUpdated(SliderEventData data) // green
+    {
+        middleCamera.orthographicSize = _middleSlider.Value;
     }
 
     public void RightSliderUpdated(SliderEventData data) // green
