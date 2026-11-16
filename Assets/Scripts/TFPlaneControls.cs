@@ -424,6 +424,41 @@ public class TFPlaneControls : MonoBehaviour
         //_TFPlane.GetComponent<MeshRenderer>().material.SetTexture("_TFTex", _volumerenderedobject.transferFunction.GetTexture());
     }
 
+    // multiuser: make the number of point objects on the plane match another user's plane.
+    // Points are added/removed at the end of the lists; the caller positions and colours them afterwards.
+    public void SetPointCounts(int colorCount, int alphaCount)
+    {
+        while (_colorPoints.Count > colorCount)
+        {
+            GameObject point = _colorPoints[_colorPoints.Count - 1];
+            _colorPoints.RemoveAt(_colorPoints.Count - 1);
+            // a colour picker is a child of its point and dies with it, so drop it from the list too
+            _colorPickers.RemoveAll(p => p == null || (point != null && p.transform.IsChildOf(point.transform)));
+            if (point != null) Destroy(point);
+        }
+        while (_colorPoints.Count < colorCount)
+        {
+            GameObject point = Instantiate(_colorPointPREFAB, _TFPlane.transform);
+            point.transform.localPosition = new Vector3(5, 0, 6);
+            point.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            _colorPoints.Add(point);
+        }
+
+        while (_alphaPoints.Count > alphaCount)
+        {
+            GameObject point = _alphaPoints[_alphaPoints.Count - 1];
+            _alphaPoints.RemoveAt(_alphaPoints.Count - 1);
+            if (point != null) Destroy(point);
+        }
+        while (_alphaPoints.Count < alphaCount)
+        {
+            GameObject point = Instantiate(_alphaPointPREFAB, _TFPlane.transform);
+            point.transform.localPosition = new Vector3(5, 0, 5);
+            point.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            _alphaPoints.Add(point);
+        }
+    }
+
     public void InstantiateColorPickers()
     {
         Debug.Log("color picker!");

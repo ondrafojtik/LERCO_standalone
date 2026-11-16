@@ -76,6 +76,17 @@ public class VolumeSolution : MonoBehaviour
     float _minHu = 0;
     float _maxHu = 0;
 
+    // --- multiuser hooks (read by Assets/Scripts/Multiuser) ---
+    // true from the moment LoadDataset is called until the volume object is completely set up
+    public bool IsLoadingDataset { get { return _datasetLoadsInProgress > 0; } }
+    // true once a dataset has been loaded successfully at least once
+    public bool HasDataset { get; private set; }
+    public GameObject SegmentedVolumeRoot { get { return _parent_SegmentedVolumeObject; } }
+    public TFPlaneControls TfPlaneControls { get { return _tfplaneControls; } }
+
+    int _datasetLoadsInProgress = 0;
+    Task _setupVroTask;
+
     static float inverse_lerp(float value, float min, float max) // 0 - 1
     {
         float val = (value - min) / (max - min);
@@ -233,7 +244,7 @@ public class VolumeSolution : MonoBehaviour
         return tf;
     }
 
-    public async void SetupVRO(VolumeRenderedObject vro, GameObject meshContainer, VolumeDataset _dataset, GameObject VolumeMainObject, GameObject crossSection)
+    public async Task SetupVRO(VolumeRenderedObject vro, GameObject meshContainer, VolumeDataset _dataset, GameObject VolumeMainObject, GameObject crossSection)
     {
         vro = VolumeMainObject.GetComponent<VolumeRenderedObject>();
         vro = await VolumeObjectFactory.FillObjectAsync(_dataset, VolumeMainObject, meshContainer);
@@ -256,8 +267,8 @@ public class VolumeSolution : MonoBehaviour
         //Texture3D tex = await dataset.GetDataTextureAsync(settings.progressHandler);
         
 
-        // setup vro
-        SetupVRO(vro, __meshContainer, dataset, VolumeMainObject, crossSection);
+        // setup vro (not awaited here, as before; LoadDataset waits for it at the very end)
+        _setupVroTask = SetupVRO(vro, __meshContainer, dataset, VolumeMainObject, crossSection);
         // setup tf
         string resources_folder = Application.dataPath + "/Resources/TF/";
         string tf_filepath = "";
@@ -407,27 +418,44 @@ public class VolumeSolution : MonoBehaviour
         // deprecated
         string segmentFolderPath = Application.dataPath + "/StreamingAssets/jatra_l/segmentation/Segmentation.nrrd";
 
-        _meshContainer.SetActive(false);
+        _datasetLoadsInProgress++;
+        try
+        {
+            _meshContainer.SetActive(false);
 
 
-        Task t;
+            Task t;
 
-        string dicomFolderPath = path;
-        t = LoadSegmentedModel(dicomFolderPath, segmentFolderPath, volume_dataset, _volumetricDataMainParentObject, _volumerenderedobject, _crossSection, _meshContainer, false, _slidersControl_DICOM, slicingPlanes);
+            string dicomFolderPath = path;
+            t = LoadSegmentedModel(dicomFolderPath, segmentFolderPath, volume_dataset, _volumetricDataMainParentObject, _volumerenderedobject, _crossSection, _meshContainer, false, _slidersControl_DICOM, slicingPlanes);
 
-        await t;
+            await t;
 
-        _tfplaneControls._volumerenderedobject = _volumerenderedobject;
-
-
-        // TADY
-        _tfplaneControls.InitiateTFPlanePoints();
+            _tfplaneControls._volumerenderedobject = _volumerenderedobject;
 
 
-        Resources.UnloadUnusedAssets();
+            // TADY
+            _tfplaneControls.InitiateTFPlanePoints();
 
 
-        //_meshContainer.SetActive(true);
+            Resources.UnloadUnusedAssets();
+
+
+            //_meshContainer.SetActive(true);
+
+            // multiuser: the load only counts as finished once SetupVRO has placed the volume object
+            Task setup = _setupVroTask;
+            if (setup != null)
+            {
+                try { await setup; }
+                catch (Exception e) { Debug.LogException(e); }
+            }
+            HasDataset = true;
+        }
+        finally
+        {
+            _datasetLoadsInProgress--;
+        }
     }
 
     public async void LoadTF(string path)
