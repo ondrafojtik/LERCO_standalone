@@ -1,0 +1,6 @@
+{
+    "enabled": true,
+    "sessionName": "LERCO",
+    "region": "eu",
+    "extraSyncedObjects": ["Cutout_DICOM", "Cutout_NRRD"]
+}
