@@ -39,7 +39,7 @@ public class TFPlaneControls : MonoBehaviour
 
     public List<GameObject> _colorPickers = new List<GameObject>();
 
-    public VolumeRenderedObject _volumerenderedobject = new VolumeRenderedObject();
+    public VolumeRenderedObject _volumerenderedobject;
 
     public Vector2 _zoom_scope = new Vector2(0.0f, 100.0f); // referring to "from - to" 
     public float _slider_min_zoom = 0.0f;
@@ -116,7 +116,7 @@ public class TFPlaneControls : MonoBehaviour
             float minHu = _volumerenderedobject.dataset.GetMinDataValue();
             float maxHu = _volumerenderedobject.dataset.GetMaxDataValue();
 
-            Debug.Log(dataValue__);
+            //Debug.Log(dataValue__);
 
             string tt = fGetHUFromFloat(alphaValue__, 0, 1).ToString("#.000") + Environment.NewLine + GetHUFromFloat(dataValue__, minHu, maxHu);
 
