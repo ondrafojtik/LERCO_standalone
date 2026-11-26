@@ -115,9 +115,9 @@ public class UniToolController : MonoBehaviour
         }
         else
         {
+            _crossSection.GetComponent<ObjectManipulator>().enabled = false;
             _cube_uniTool.GetComponent<BoxCollider>().enabled = true;
             _cube_uniTool.GetComponent<ObjectManipulator>().enabled = true;
-            _crossSection.GetComponent<ObjectManipulator>().enabled = false;
         }
 
     }

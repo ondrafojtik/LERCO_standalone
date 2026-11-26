@@ -559,7 +559,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 10.000001, y: 8.9039887e-14, z: 10}
   m_Center: {x: 0, y: 0.0000038146973, z: 0.0000009536743}
@@ -1896,7 +1896,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112820089}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9ad66e7cc9a2754d8ea989740c9f00d, type: 3}
   m_Name: 
@@ -3262,7 +3262,6 @@ GameObject:
   m_Component:
   - component: {fileID: 182742661}
   - component: {fileID: 182742664}
-  - component: {fileID: 182742663}
   - component: {fileID: 182742662}
   m_Layer: 9
   m_Name: GREEN_SPECTATE
@@ -3330,14 +3329,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &182742663
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182742660}
-  m_Enabled: 1
 --- !u!20 &182742664
 Camera:
   m_ObjectHideFlags: 0
@@ -5445,7 +5436,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 10.000001, y: 8.9039887e-14, z: 10}
   m_Center: {x: 0, y: 0.0000038146973, z: 0.0000009536743}
@@ -6923,7 +6914,6 @@ GameObject:
   m_Component:
   - component: {fileID: 611277008}
   - component: {fileID: 611277007}
-  - component: {fileID: 611277006}
   - component: {fileID: 611277005}
   m_Layer: 9
   m_Name: BLUE_SPECTATE
@@ -6976,14 +6966,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &611277006
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611277004}
-  m_Enabled: 1
 --- !u!20 &611277007
 Camera:
   m_ObjectHideFlags: 0
@@ -9335,7 +9317,6 @@ GameObject:
   m_Component:
   - component: {fileID: 882200380}
   - component: {fileID: 882200383}
-  - component: {fileID: 882200382}
   - component: {fileID: 882200381}
   m_Layer: 9
   m_Name: RED_SPECTATE
@@ -9403,14 +9384,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &882200382
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882200379}
-  m_Enabled: 1
 --- !u!20 &882200383
 Camera:
   m_ObjectHideFlags: 0
@@ -10804,8 +10777,7 @@ PrefabInstance:
         type: 3}
       propertyPath: magicLeapControllerPrefab
       value: 
-      objectReference: {fileID: 2066940876909342129, guid: 774356060c9021d4eb3d0307c9bf4276,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4843347076127633436, guid: f431663de5362c349b2ba243de34fdd1,
         type: 3}
       propertyPath: m_Name
@@ -12515,7 +12487,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 832769253}
+  - {fileID: 1081427336}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -13399,7 +13373,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1408834648}
   - component: {fileID: 1408834651}
-  - component: {fileID: 1408834650}
   - component: {fileID: 1408834649}
   m_Layer: 9
   m_Name: PEDICLE_SPECTATE_X
@@ -13467,14 +13440,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1408834650
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408834647}
-  m_Enabled: 1
 --- !u!20 &1408834651
 Camera:
   m_ObjectHideFlags: 0
@@ -18177,7 +18142,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 10.000001, y: 8.9039887e-14, z: 10}
   m_Center: {x: 0, y: 0.0000038146973, z: 0.0000009536743}
